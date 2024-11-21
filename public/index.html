@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1, viewport-fit=cover, width=device-width"></meta>
+<meta name="apple-mobile-web-app-capable" content="yes"></meta>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Mobilekit HTML Mobile UI Kit">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="keywords" content="W3.CSS, mobile template, cordova, phonegap, mobile, html" />
+<!-- update the version number as needed -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- 
+  initialize the SDK after all desired features are loaded, set useEmulator to false
+  to avoid connecting the SDK to running emulators.
+-->
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="indigo.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="manifest" href="manifest.json">
+<script src="w3.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+
+</head>
+<body class="w3-container w3-indigo">
+<div class="w3-top w3-bar w3-border w3-black w3-card-4 w3-theme-l3">
+  <a class="w3-bar-item w3-button" onclick="nav('home');"><i class="fa fa-home w3-xlarge w3-margin-left"></i></a>
+  <a class="w3-bar-item w3-button admin" onclick="nav('form');">Obit Info</a>
+  <a class="w3-bar-item w3-button admin" onclick="nav('about');">About</a>
+  <a class="w3-bar-item w3-button admin" onclick="nav('contact');">Photos</a>
+  <a class="w3-bar-item w3-button w3-right" onclick="w3.toggleShow('.admin');"><i class="fa fa-lock w3-xlarge w3-margin-right"></i></a>
+</div>
+  <div id="home" class="w3-container w3-center" style="padding-top: 70px; display: none">
+    <h2 id="hdr_name">Name</h2>
+    <h4 id="hdr_tagLine">Short</h4>
+    <img src="" id="obit_pic" class="w3-card-4" style="width:80%;max-width:320px">
+    <h3 id="hdr_dates">Dates</h3>
+  </div>
+  <div id = "obit" style="padding-left: 10%; padding-right: 10%; padding-bottom: 200px;">  
+    <p id="obit_body0"></p>
+    <p id="obit_body1"></p>
+    <p id="obit_body2"></p>
+    <p id="obit_body3"></p>
+    <div class="w3-container w3-center">
+      <p id="obit_body4"></p>
+    </div>
+    </div>
+  </div>
+</div>
+<div id="form" style="padding-top: 70px; display: none;";>
+  <div class="w3-container w3-center">
+    <h2>Obituary Information Form</h2>
+  </div>
+  <form id="obitInfo" method="post" style="margin-left: 5%; margin-right: 5%;">
+    <input type="hidden" id="mainImage" value="" name="mainImage">
+    <input type="hidden" id="slideShow" value="" name="slideShow">
+    <fieldset style="margin: 24px;">
+      <legend>  Obituary Info</legend>
+      <label for="subline">Sub Line</label><br>
+      <input type="text" class="w3-input" id="subline" name="subline"><br>
+      <label for="fname">First Name</label><br>
+      <input type="text" class="w3-input" id="fname" name="fname"><br>
+      <label for="mname">Middle Name</label><br>
+      <input type="text" class="w3-input"  id="mname" name="mname"><br>
+      <label for="lname">Last Name</label><br>
+      <input type="text" class="w3-input"  id="lname" name="lname"><br>
+      <label for="service">Life History</label><br>
+      <textarea class="w3-input"  id="service" name="service" rows="5"></textarea>
+      <label for="from">From (City, State)</label><br>
+      <input type="text" class="w3-input"  id="from" name="from"><br>
+      <label for="dob">Birth Date</label><br>
+      <input type="text" class="w3-input"  id="dob" name="dob"><br>
+      <label for="pob">Birth Place (City, State)</label><br>
+      <input type="text" class="w3-input"  id="pob" name="pob"><br>
+      <label for="dod">Passed Date</label><br>
+      <input type="text" class="w3-input"  id="dod" name="dod"><br>
+      <label for="pod">Passed Place (City, State)</label><br>
+      <input type="text" class="w3-input"  id="pod" name="pod"><br>
+      <label for="entured">Burial Location</label><br>
+      <input type="text" class="w3-input"  id="entured" name="entured"><br>
+      <label for="mother">Mothers Name</label><br>
+      <input type="text" class="w3-input"  id="mother" name="mother"><br>
+      <label for="father">Father name</label><br>
+      <input type="text" class="w3-input"  id="father" name="father"><br>
+      <label for="preceded">Preceded By</label><br>
+      <textarea class="w3-input"  id="preceded" name="preceded" rows="5"></textarea>
+      <label for="survived">Survived By</label><br>
+      <textarea class="w3-input"  id="survived" name="survived" rows="5"></textarea>
+      <br /><br />
+      <button class="w3-btn w3-blue w3-round-xlarge w3-align-middle w3-margin" type="Submit">Save</button>
+      <button class="w3-btn w3-blue w3-round-xlarge w3-align-middle w3-margin" type="Reset">Reset</button>
+      </fieldset>
+  </form>
+</div>
+<div id="about" style="padding-top: 70px; padding-left: 30px; display: none;">
+  <h2>This is the about page.</h2>
+  <p>This is the about page  content</p>
+  <div id="qrcode" class="w3-container w3-center"></div>
+      <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "https://firefuncs-4976e.web.app");
+      </script>
+  </div>
+<div id="contact"  style="padding-top: 70px; padding-left: 30px; display: none;">
+  <h2>This is the photo library page.</h2>
+  <p>This is the photos uploads page</p>
+  <button class="w3-button w3-blue" onclick = "showInput1();">Set Home Photo</button>
+  <button class="w3-button w3-blue" onclick = "showInput2();">Add to Photo Show</button>
+  <p id = "mainImage" style="padding-top: 20px; display: none;">
+    <input id="imgIn1" type="file" class="file-selectM" accept="image/*" />
+  </p>
+  <p id = "galleryImage" style="padding-top: 20px; display: none;">
+    <input id="imgIn2" type="file" class="file-selectG" accept="image/*" />
+  </p>
+
+
+</div>
+<div id="bottom" class="w3-bottom w3-bar w3-theme-l3">
+  <a class="w3-bar-item w3-button" onclick="nav('home');">Home</a>
+  <a class="w3-bar-item w3-button" onclick="loadForm()">Load</a>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function ()  {
+  id = window.location.href.split('id=')[1]
+  if (id) {
+    window.localStorage.setItem('id', id);
+  } else {
+    id ='66666666'
+    window.localStorage.setItem('id', id);
+  }
+  loadHeader();
+  loadForm();
+  nav('home');
+})
+
+function showInput1() {
+  w3.show('#mainImage');
+}
+
+function showInput2() {
+  w3.show('#galleryImage');
+}
+
+function nav(page) {
+  w3.hide('#home');
+  w3.hide('#form');
+  w3.hide('#contact');
+  w3.hide('#about');
+  w3.hide('#obit');
+  topage='#'+page;
+  w3.show(topage);
+  if (topage === '#home') {
+    w3.show('#obit')
+  } else {
+    w3.hide('#obit');
+  }
+//  w3.show("#bottom");
+}
+
+</script>
+<script src="db.js"></script>
+<script src="scaffold.js"></script>
+</body>
+</html> 
