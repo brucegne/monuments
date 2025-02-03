@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, viewport-fit=cover, width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Mobilekit HTML Mobile UI Kit" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="keywords"
+      content="W3.CSS, mobile template, cordova, phonegap, mobile, html"
+    />
+    <!-- update the version number as needed -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- 
+  initialize the SDK after all desired features are loaded, set useEmulator to false
+  to avoid connecting the SDK to running emulators.
+-->
+    <style>
+      .w3-btn {
+        width: 250px;
+        padding-top: 20px;
+      },
+      body {
+        background-color: coral !important;
+      },
+        body, header, img {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        },
+    </style>
+    <link rel="stylesheet" href="w3.css" />
+    <link rel="stylesheet" href="frame.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <script src="w3.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+  </head>
+  <body style="background-color: light-brown">
+    <div
+      id="headerBar"
+      class="w3-panel"
+      style="margin-top: 50px; margin-bottom: 25px"
+    >
+      <select
+        class="w3-select w3-center"
+        name="history"
+        id="history"
+        onchange="loadHistory($(this).val());"
+      >
+        <option value="0000">Select History</option>
+        <option value="66666666">Bruce Edwin Gordon</option>
+        <option value="mag82">Michael Alan Gordon</option>
+        <option value="klg95">Kellie Lynn Gordon</option>
+      </select>
+      <a
+        class="w3-bar-item w3-button w3-right w3-xxlarge"
+        onclick="nav('adminMenu');"
+        ><i class="fa fa-lock w3-margin-right"></i
+      ></a>
+    </div>
+    <div
+      id="adminMenu"
+      class="w3-container w3-center allPages"
+      style="display: none; padding-top: 150px"
+    >
+      <div class="w3-container w3-center adminMenu" id="secureAdminMenu">
+        <h2>Admin Menu</h2>
+        <p>
+          <button
+            class="w3-btn w3-hover-red w3-border w3-rounded"
+            onclick="nav('form');"
+          >
+            Obit Entry
+          </button>
+        </p>
+        <p>
+          <button class="w3-btn w3-hover-red w3-border w3-rounded"
+                  onclick="nav('share');">
+            Share
+          </button>
+        </p>
+        <p>
+          <button class="w3-btn w3-hover-red w3-border w3-rounded"
+                  onclick="nav('gallery');">
+            Photo Gallery
+          </button>
+        </p>
+        <p>
+          <button class="w3-btn w3-hover-red w3-border w3-rounded"
+                  onclick="nav('home');">
+            Logout
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <div
+      id="home"
+      class="w3-container w3-center allPages"
+      style="display: none"
+    >
+      <div class="w3-row">
+        <div class="w3-third">&nbsp;</div>
+        <div class="w3-third">
+          <img
+            width="100%"
+            class="w3-border w3-center w3-card-4"
+            id="obit_pic"
+          />
+        </div>
+        <div class="w3-third">&nbsp;</div>
+      </div>
+    </div>
+    <div
+      id="obit"
+      style="padding-left: 10%; padding-right: 10%; padding-bottom: 200px"
+    >
+      <h2 class="w3-container w3-center" style="padding-top: 20px" id="hdr_name">Name</h2>
+      <h4 class="w3-container w3-center" id="hdr_tagLine">Short</h4>
+      <h3 class="w3-container w3-center" id="hdr_dates">Dates</h3>
+      <p id="obit_body0"></p>
+      <p id="obit_body1"></p>
+      <p id="obit_body2"></p>
+      <p id="obit_body3"></p>
+      <p style="padding-top: 120px"></p>
+
+      <div class="w3-container w3-center">
+        <div class="w3-content w3-display-container" id="obit_body4">
+          <img
+            class="mySlides"
+            src="img_snowtops.jpghttps://firebasestorage.googleapis.com/v0/b/fship-app.appspot.com/o/images%2F66666666%2FDSCN0144.JPG?alt=media&token=27325793-4b69-44fa-90ad-c1f6e063732c"
+            style="width: 50%"
+          />
+          <button
+            class="w3-button w3-black w3-display-left"
+            onclick="plusDivs(-1)"
+          >
+            &#10094;
+          </button>
+          <button
+            class="w3-button w3-black w3-display-right"
+            onclick="plusDivs(1)"
+          >
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End of Obitiuary Page -->
+    <!-- Beginning of Obituary Information Input form -->
+    <div id="form" style="padding-top: 70px; display: none">
+      <div class="w3-container w3-center allPages">
+        <h2>Obituary Information Entry</h2>
+      </div>
+      <form
+        id="obitInfo"
+        method="post"
+        style="margin-left: 5%; margin-right: 5%"
+      >
+        <input type="hidden" id="pincode" value="" name="pinCode" />
+        <input type="hidden" id="mainImage" value="" name="mainImage" />
+        <input type="hidden" id="slideShow" value="" name="slideShow" />
+        <fieldset style="margin: 24px">
+          <legend>Obituary Info</legend>
+          <label for="subline">Sub Line</label><br />
+          <input
+            type="text"
+            class="w3-input"
+            id="subline"
+            name="subline"
+          /><br />
+          <label for="fname">First Name</label><br />
+          <input type="text" class="w3-input" id="fname" name="fname" /><br />
+          <label for="mname">Middle Name</label><br />
+          <input type="text" class="w3-input" id="mname" name="mname" /><br />
+          <label for="lname">Last Name</label><br />
+          <input type="text" class="w3-input" id="lname" name="lname" /><br />
+          <label for="service">Life History</label><br />
+          <textarea
+            class="w3-input"
+            id="service"
+            name="service"
+            rows="5"
+          ></textarea>
+          <label for="from">From (City, State)</label><br />
+          <input type="text" class="w3-input" id="from" name="from" /><br />
+          <label for="dob">Birth Date</label><br />
+          <input type="text" class="w3-input" id="dob" name="dob" /><br />
+          <label for="pob">Birth Place (City, State)</label><br />
+          <input type="text" class="w3-input" id="pob" name="pob" /><br />
+          <label for="dod">Passed Date</label><br />
+          <input type="text" class="w3-input" id="dod" name="dod" /><br />
+          <label for="pod">Passed Place (City, State)</label><br />
+          <input type="text" class="w3-input" id="pod" name="pod" /><br />
+          <label for="entured">Burial Location</label><br />
+          <input
+            type="text"
+            class="w3-input"
+            id="entured"
+            name="entured"
+          /><br />
+          <label for="mother">Mothers Name</label><br />
+          <input type="text" class="w3-input" id="mother" name="mother" /><br />
+          <label for="father">Father name</label><br />
+          <input type="text" class="w3-input" id="father" name="father" /><br />
+          <label for="preceded">Preceded By</label><br />
+          <textarea
+            class="w3-input"
+            id="preceded"
+            name="preceded"
+            rows="5"
+          ></textarea>
+          <label for="survived">Survived By</label><br />
+          <textarea
+            class="w3-input"
+            id="survived"
+            name="survived"
+            rows="5"
+          ></textarea>
+          <br /><br />
+          <button
+            class="w3-btn w3-blue w3-round-xlarge w3-align-middle w3-margin"
+            type="Submit"
+          >
+            Save
+          </button>
+          <button
+            class="w3-btn w3-blue w3-round-xlarge w3-align-middle w3-margin"
+            type="Reset"
+          >
+            Reset
+          </button>
+        </fieldset>
+      </form>
+    </div>
+    <!-- End of Obituary Information Input Form -->
+    <!-- Beginning of Share QR Code Page -->
+    <div
+      id="share"
+      class="w3-center allPages"
+      style="padding-top: 70px; padding-left: 30px; display: none"
+    >
+      <p>This is the QR Code for this Page</p>
+      <div id="qrcode" class="w3-container w3-center"></div>
+      <script type="text/javascript">
+        var loc = document.location.href;
+        new QRCode(document.getElementById("qrcode"), loc);
+      </script>
+    </div>
+    <div
+      id="gallery"
+      class="w3-containter w3-center"
+      style="padding-top: 70px; display: none"
+    >
+      <h2 class="w3-center">This is the photo library page.</h2>
+      <button class="w3-button w3-blue" onclick="showInput1();">
+        Set Home Photo
+      </button>
+      <button class="w3-button w3-blue" onclick="showInput2();">
+        Add to Photo Gallary
+      </button>
+      <div style="padding-left: 15%; padding-right: 15%">
+        <p id="mainImageInput" style="padding-top: 20px; display: none">
+          <input
+            id="imgIn1"
+            type="file"
+            class="file-selectM"
+            accept="image/*"
+          />
+        </p>
+        <span id="galleryImage" style="padding-top: 20px; display: none">
+          <input
+            id="imgIn2"
+            type="file"
+            class="file-selectG"
+            accept="image/*"
+          />
+          <p style="padding-top: 20px">
+            <strong>Click on image to remove it from list</strong>
+          </p>
+          <div
+            style="padding-top: 15px; padding-right: 30px; display: block"
+            id="imageList"
+          ></div>
+        </span>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        id = window.location.href.split("id=")[1];
+        if (id) {
+          window.localStorage.setItem("id", id);
+        } else {
+          id = "66666666";
+          window.localStorage.setItem("id", id);
+        }
+        loadHeader();
+        loadForm();
+        nav("home");
+      });
+
+      function loadHistory(Histid) {
+        console.log("getting history");
+        console.log(Histid);
+        id = Histid;
+        if (id) {
+          window.localStorage.setItem("id", id);
+        } else {
+          id = "66666666";
+          window.localStorage.setItem("id", id);
+        }
+        loadHeader();
+        loadForm();
+        nav("home");
+      }
+      function showInput1() {
+        w3.hide("#galleryImage");
+        w3.show("#mainImageInput");
+      }
+
+      function showInput2() {
+        w3.hide("#mainImageInput");
+        w3.show("#galleryImage");
+      }
+
+      function nav(page) {
+        w3.hide(".allPages");
+        w3.hide("#home");
+        w3.hide("#form");
+        w3.hide("#share");
+        w3.hide("#gallery");
+        w3.hide("#obit");
+        topage = "#" + page;
+        if (topage == "#gallery") {
+          console.log("Loading Images");
+          console.log(slideShow);
+          loadImageList(slideShow);
+        }
+        w3.show(topage);
+        if (topage === "#home") {
+          w3.show("#obit");
+        } else {
+          w3.hide("#obit");
+        }
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          //          behavior: 'smooth' // Optional for smooth scrolling
+        });
+        //  w3.show("#bottom");
+      }
+
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = x.length;
+        }
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+      }
+    </script>
+    <script src="db.js"></script>
+    <script src="w3.js"></script>
+    <script src="scaffold.js"></script>
+  </body>
+</html>
