@@ -1,4 +1,4 @@
-rules_version = '1';
+rules_version = '2';
 
 // Craft rules based on data in your Firestore database
 // allow write: if firestore.get(
@@ -6,7 +6,7 @@ rules_version = '1';
 service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
-      allow read, write: if false;
+      allow read, write: if request.time < timestamp.date(2028, 11, 8);
     }
   }
 }
