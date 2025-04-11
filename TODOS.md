@@ -7,6 +7,6 @@ Add geo tagging feature
 
 Add auto add for history feature
 
-Finish asmin page for adding sales
+Finish admin page for adding sales
 
 
