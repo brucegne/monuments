@@ -38,19 +38,15 @@
         width: 250px;
         padding-top: 20px;
       },
-        header, img {
+      body {
+        background-color: brown;
+      },
+        body, header, img {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-        }
-    </style>
-    <style>
-        body {
-          background-color:maroon;
-          color: white;
-          font-weight: 200;
-        }
+        },
     </style>
     <link rel="stylesheet" href="w3.css" />
     <link rel="stylesheet" href="frame.css" />
@@ -101,8 +97,10 @@
           </button>
         </p>
         <p>
-          <button class="w3-btn w3-hover-red w3-border w3-rounded"
-                  onclick="nav('share');">
+          <button
+            class="w3-btn w3-hover-red w3-border w3-rounded"
+            onclick="nav('share');"
+          >
             Share
           </button>
         </p>
@@ -111,18 +109,22 @@
             class="w3-btn w3-hover-red w3-border w3-rounded"
             onclick="nav('form');"
           >
-           Geo Tag 
+            Geo Tag
           </button>
         </p>
         <p>
-          <button class="w3-btn w3-hover-red w3-border w3-rounded"
-                  onclick="nav('gallery');">
+          <button
+            class="w3-btn w3-hover-red w3-border w3-rounded"
+            onclick="nav('gallery');"
+          >
             Photo Gallery
           </button>
         </p>
         <p>
-          <button class="w3-btn w3-hover-red w3-border w3-rounded"
-                  onclick="nav('home');">
+          <button
+            class="w3-btn w3-hover-red w3-border w3-rounded"
+            onclick="nav('home');"
+          >
             Logout
           </button>
         </p>
@@ -150,7 +152,13 @@
       id="obit"
       style="padding-left: 10%; padding-right: 10%; padding-bottom: 200px"
     >
-      <h2 class="w3-container w3-center" style="padding-top: 20px" id="hdr_name">Name</h2>
+      <h2
+        class="w3-container w3-center"
+        style="padding-top: 20px"
+        id="hdr_name"
+      >
+        Name
+      </h2>
       <h4 class="w3-container w3-center" id="hdr_tagLine">Short</h4>
       <h3 class="w3-container w3-center" id="hdr_dates">Dates</h3>
       <p id="obit_body0"></p>
