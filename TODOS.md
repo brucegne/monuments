@@ -7,3 +7,8 @@ Add geo tagging feature
 Add auto add for history feature
 
 Finish admin page for adding sales
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/main

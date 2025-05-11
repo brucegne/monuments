@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "Users": {
+      ".indexOn": ["name","phone","email"],
+    },
+    ".read": "now < now + 86400",
+    ".write": "now < now + 86400",
+  }
+}
