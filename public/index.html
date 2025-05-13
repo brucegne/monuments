@@ -77,7 +77,7 @@
       </select>
       <a
         class="w3-bar-item w3-button w3-right w3-xxlarge"
-        onclick="nav('adminMenu');"
+        onclick="procPin()";
         ><i class="fa fa-lock w3-margin-right"></i
       ></a>
     </div>
@@ -341,6 +341,20 @@
         loadForm();
         nav("home");
       });
+
+
+        onclick="nav('adminMenu');"
+
+
+
+      function procPin() {
+        pinCode = prompt("Enter your pin code"); 
+        if (pinCode == "5798") {
+            nav('adminMenu');
+        } else {
+            alert("Invalid Pin Code");
+        }  
+      }
 
       function loadHistory(Histid) {
         console.log("getting history");
