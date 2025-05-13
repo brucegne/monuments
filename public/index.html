@@ -342,17 +342,13 @@
         nav("home");
       });
 
-
-        onclick="nav('adminMenu');"
-
-
-
       function procPin() {
         pinCode = prompt("Enter your pin code"); 
         if (pinCode == "5798") {
             nav('adminMenu');
         } else {
             alert("Invalid Pin Code");
+            nav('home');
         }  
       }
 
