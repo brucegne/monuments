@@ -37,16 +37,21 @@
       .w3-btn {
         width: 250px;
         padding-top: 20px;
-      },
+      }
+      ,
+      body1,
+      header1,
+      img1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      ,
       body {
-        background-color: brown;
-      },
-        body, header, img {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        },
+        background: light-green no-repeat fixed center;
+        background-size: auto;
+      }
     </style>
     <link rel="stylesheet" href="w3.css" />
     <link rel="stylesheet" href="frame.css" />
@@ -58,7 +63,16 @@
     <script src="w3.js"></script>
     <script type="text/javascript" src="qrcode.js"></script>
   </head>
-  <body style="background-color: light-brown">
+  <body
+    style="
+      background-image: url('../images//backgnd.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      background-attachment: fixed;
+      color : white;
+    "
+  >
     <div
       id="headerBar"
       class="w3-panel"
@@ -77,7 +91,7 @@
       </select>
       <a
         class="w3-bar-item w3-button w3-right w3-xxlarge"
-        onclick="procPin()";
+        onclick="nav('adminMenu');"
         ><i class="fa fa-lock w3-margin-right"></i
       ></a>
     </div>
@@ -167,8 +181,8 @@
       <p id="obit_body3"></p>
       <p style="padding-top: 120px"></p>
 
-      <div class="w3-container w3-center">
-        <div class="w3-content w3-display-container" id="obit_body4">
+      <div>
+        <div class="w3-content w3-display-container w3-center" id="obit_body4">
           <img
             class="mySlides"
             src="img_snowtops.jpghttps://firebasestorage.googleapis.com/v0/b/fship-app.appspot.com/o/images%2F66666666%2FDSCN0144.JPG?alt=media&token=27325793-4b69-44fa-90ad-c1f6e063732c"
@@ -341,16 +355,6 @@
         loadForm();
         nav("home");
       });
-
-      function procPin() {
-        pinCode = prompt("Enter your pin code"); 
-        if (pinCode == "5798") {
-            nav('adminMenu');
-        } else {
-            alert("Invalid Pin Code");
-            nav('home');
-        }  
-      }
 
       function loadHistory(Histid) {
         console.log("getting history");
