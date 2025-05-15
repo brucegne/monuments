@@ -1,4 +1,4 @@
-const staticPWA = "dev-pypwa-v11"
+const staticPWA = "dev-pypwa-v15"
 const assets = [
     // "",
     // "/",
