@@ -1,4 +1,4 @@
-const staticPWA = "dev-pypwa-v15"
+const staticPWA = "dev-pypwa-v17"
 const assets = [
     // "",
     // "/",
@@ -12,6 +12,8 @@ const assets = [
     "icons/256x256.png",
     "icons/headstone.png",
     "icons/grave2.png",
+    "images/backgnd.png",
+    "images/background.jpg",
     "w3.css",
     "w3.js",
     "qrcode.js",
