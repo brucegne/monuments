@@ -39,9 +39,9 @@
         padding-top: 20px;
       }
       ,
-      body1,
-      header1,
-      img1 {
+      body,
+      header,
+      img {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -64,14 +64,6 @@
     <script type="text/javascript" src="qrcode.js"></script>
   </head>
   <body
-    style="
-      background-image: url('https://cdn.glitch.global/3500da69-9854-44d7-8f86-61ce36666eab/backgnd.png?v=1747273724514');
-      background-repeat: no-repeat;
-      background-size: 100vw 100vh;
-      background-position: center;
-      background-attachment: fixed;
-      color : white;
-    "
   >
     <div
       id="headerBar"
@@ -164,21 +156,21 @@
     </div>
     <div
       id="obit"
-      style="  w3-black   padding-left: 10%; padding-right: 10%; padding-bottom: 200px"
+      style="      padding-left: 10%; padding-right: 10%; padding-bottom: 200px"
     >
       <h2
-        class="w3-container w3-center   w3-black  "
+        class="w3-container w3-center      "
         style="padding-top: 20px"
         id="hdr_name"
       >
         Name
       </h2>
-      <h4 class="w3-container w3-center   w3-black  " id="hdr_tagLine">Short</h4>
-      <h3 class="w3-container w3-center   w3-black    " id="hdr_dates">Dates</h3>
-      <p id="obit_body0" class="  w3-black  "></p>
-      <p id="obit_body1" class="  w3-black  "></p>
-      <p id="obit_body2" class="  w3-black  "></p>
-      <p id="obit_body3" class="  w3-black  "></p>
+      <h4 class="w3-container w3-center      " id="hdr_tagLine">Short</h4>
+      <h3 class="w3-container w3-center        " id="hdr_dates">Dates</h3>
+      <p id="obit_body0" class="     "></p>
+      <p id="obit_body1" class="     "></p>
+      <p id="obit_body2" class="     "></p>
+      <p id="obit_body3" class="     "></p>
       <p style="padding-top: 120px"></p>
 
       <div>
@@ -189,13 +181,13 @@
             style="width: 50%"
           />
           <button
-            class="w3-button w3-black w3-display-left"
+            class="w3-button   w3-display-left"
             onclick="plusDivs(-1)"
           >
             &#10094;
           </button>
           <button
-            class="w3-button w3-black w3-display-right"
+            class="w3-button   w3-display-right"
             onclick="plusDivs(1)"
           >
             &#10095;

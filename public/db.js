@@ -31,7 +31,6 @@ form.addEventListener("submit", handleSubmit);
 function loadForm() {
   var dbRef = db.collection("obits").doc(id);
   dbRef.get().then((doc) => {
-    //        res=JSON.parse(doc);
     console.log(doc.data());
     dumpForm(doc.data());
   });
